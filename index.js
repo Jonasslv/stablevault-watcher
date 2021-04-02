@@ -42,7 +42,7 @@ const subscribeToSwaps = function () {
             result.topics.slice(1),
         );
 
-        const message = `\`\`\`Swap ${normalizeFloat(web3.utils.fromWei(tokensSold, getTokenUnitById(soldId)), 2)} ${getTokenById(soldId)} for ${normalizeFloat(web3.utils.fromWei(tokensBought, getTokenUnitById(tokensBought)), 2)} ${getTokenById(boughtId)} \nTransaction: ${transactionHash}\`\`\``;
+        const message = `\`\`\`Swap ${normalizeFloat(web3.utils.fromWei(tokensSold, getTokenUnitById(soldId)), 2)} ${getTokenById(soldId)} for ${normalizeFloat(web3.utils.fromWei(tokensBought, getTokenUnitById(boughtId)), 2)} ${getTokenById(boughtId)} \nTransaction: ${transactionHash}\`\`\``;
         notifyDiscord(message);
     });
 }
