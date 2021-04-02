@@ -42,7 +42,7 @@ const subscribeToSwaps = function () {
             result.topics.slice(1),
         );
 
-        const message = `\`\`\`Swap ${normalizeFloat(web3.utils.fromWei(tokensSold), 2)} ${idToTokenMapping[soldId]} for ${normalizeFloat(web3.utils.fromWei(tokensBought), 2)} ${idToTokenMapping[boughtId]} \nTransaction: ${transactionHash}\`\`\``;
+        const message = `\`\`\`Swap ${normalizeFloat(web3.utils.fromWei(tokensSold, getTokenUnitById(soldId)), 2)} ${getTokenById(soldId)} for ${normalizeFloat(web3.utils.fromWei(tokensBought, getTokenUnitById(tokensBought)), 2)} ${getTokenById(boughtId)} \nTransaction: ${transactionHash}\`\`\``;
         notifyDiscord(message);
     });
 }
@@ -87,7 +87,7 @@ const subscribeToAdds = function () {
 
         for (const [tokenId, amount] of Object.entries(tokenAmounts)) {
             if (amount !== '0') {
-                message += ` ${normalizeFloat(web3.utils.fromWei(amount), 2)} ${getTokenById(tokenId)} +`;
+                message += ` ${normalizeFloat(web3.utils.fromWei(amount, getTokenUnitById(tokenId)), 2)} ${getTokenById(tokenId)} +`;
             }
         }
 
@@ -130,7 +130,7 @@ const subscribeToRemoves = function () {
 
         for (const [tokenId, amount] of Object.entries(tokenAmounts)) {
             if (amount !== '0') {
-                message += ` ${normalizeFloat(web3.utils.fromWei(amount), 2)} ${getTokenById(tokenId)} +`;
+                message += ` ${normalizeFloat(web3.utils.fromWei(amount, getTokenUnitById(tokenId)), 2)} ${getTokenById(tokenId)} +`;
             }
         }
 
@@ -144,6 +144,16 @@ const subscribeToRemoves = function () {
 notifyDiscord = async function (message) {
     const channel = await discord.channels.cache.get(process.env.DISCORD_CHANNEL_ID);
     await channel.send(message);
+}
+
+getTokenUnitById = function (id) {
+    const idToUnitMapping = {
+        0: 'mwei', // USDT
+        1: 'ether', // BUSD
+        2: 'ether', // DAI
+    };
+
+    return idToUnitMapping[id];
 }
 
 getTokenById = function (id) {
