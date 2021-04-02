@@ -1,0 +1,26 @@
+{
+  "name": "stablevault-watcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0",
+    "rtrim": "^1.0.1",
+    "web3": "^1.3.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kadir96/stablevault-watcher.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kadir96/stablevault-watcher/issues"
+  },
+  "homepage": "https://github.com/kadir96/stablevault-watcher#readme"
+}
