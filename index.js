@@ -57,8 +57,15 @@ const buildMessage = async (type, transactionHash, data) => {
         tvl +=  parseInt(reserveWithDecimals);
     }
 
+    const currencyFormatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+    });
+
     message = rtrim(message, '+');
-    message += `\nTVL: $${tvl}`;
+    message += `\nTVL: $${currencyFormatter.format(tvl)}`;
     message += '```';
 
     return message;
