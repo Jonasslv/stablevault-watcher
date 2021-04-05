@@ -65,7 +65,7 @@ const buildMessage = async (type, transactionHash, data) => {
     });
 
     message = rtrim(message, '+');
-    message += `\nTVL: $${currencyFormatter.format(tvl)}`;
+    message += `\nTVL: ${currencyFormatter.format(tvl)}`;
     message += '```';
 
     return message;
