@@ -34,7 +34,7 @@ const buildMessage = async (type, transactionHash, data) => {
     let message = `\`\`\`${type}`;
 
     if (type === utils.operationTypes.swap) {
-        message += `${utils.normalizeFloat(web3.utils.fromWei(data.tokensSold, utils.getTokenUnitById(data.soldId)), 2)} ${utils.getTokenById(data.soldId)} for ${utils.normalizeFloat(web3.utils.fromWei(data.tokensBought, utils.getTokenUnitById(data.boughtId)), 2)} ${utils.getTokenById(data.boughtId)}`;
+        message += ` ${utils.normalizeFloat(web3.utils.fromWei(data.tokensSold, utils.getTokenUnitById(data.soldId)), 2)} ${utils.getTokenById(data.soldId)} for ${utils.normalizeFloat(web3.utils.fromWei(data.tokensBought, utils.getTokenUnitById(data.boughtId)), 2)} ${utils.getTokenById(data.boughtId)}`;
     } else {
         for (const [tokenId, amount] of Object.entries(data.tokenAmounts)) {
             if (amount !== '0') {
