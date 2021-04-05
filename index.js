@@ -47,13 +47,13 @@ const buildMessage = async (type, transactionHash, data) => {
 
     message += `\nTransaction: ${transactionHash}`;
 
-    message += `\nReserves: `;
+    message += `\nReserves:`;
     const reserves = await getReserves();
     let tvl = 0;
 
     for (const [tokenId, reserve] of Object.entries(reserves)) {
         const reserveWithDecimals = Web3.utils.fromWei(reserve, utils.getTokenUnitById(tokenId));
-        message += `${utils.normalizeFloat(reserveWithDecimals, 2)} ${utils.getTokenById(tokenId)} +`;
+        message += ` ${utils.normalizeFloat(reserveWithDecimals, 2)} ${utils.getTokenById(tokenId)} +`;
         tvl +=  parseInt(reserveWithDecimals);
     }
 
