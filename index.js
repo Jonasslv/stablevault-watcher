@@ -28,6 +28,15 @@ const subscribeToRemoves = async () => {
         const message = await buildMessage(utils.operationTypes.remove, event.transactionHash, event.returnValues);
         await notifyDiscord(message);
     });
+
+    stableVaultContract.events.RemoveLiquidityOne(null, async (error, event) => {
+        const message = await buildMessage(utils.operationTypes.remove, event.transactionHash, {
+            tokenAmounts: {
+                [event.returnValues.boughtId]: event.returnValues.tokensBought,
+            }
+        });
+        await notifyDiscord(message);
+    });
 }
 
 const buildMessage = async (type, transactionHash, data) => {
