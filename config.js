@@ -19,7 +19,9 @@ module.exports = {
                     unit: 'ether',
                 },
             ],
-            contractAddress: '0x6B41E5c07F2d382B921DE5C34ce8E2057d84C042'
+            contractAddress: '0x6B41E5c07F2d382B921DE5C34ce8E2057d84C042',
+            image: 'https://i.imgur.com/JM68PoX.png',
+            embedColor: '0x2b9cf3'
         },
         {
             name: 'S3F',
@@ -40,7 +42,9 @@ module.exports = {
                     unit: 'mwei',
                 },
             ],
-            contractAddress: '0x05c5DB43dB72b6E73702EEB1e5b62A03a343732a'
+            contractAddress: '0x05c5DB43dB72b6E73702EEB1e5b62A03a343732a',
+            image: 'https://i.imgur.com/B7UDMiC.png',
+            embedColor: '0x2bf338'
         }
     ],
 };
